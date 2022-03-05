@@ -10,7 +10,7 @@ declare class Tag {
      */
     asterisk(): void;
     lose(): void;
-    win(): void;
+    win(url?: string): void;
     global(): void;
     err(): void;
     empty(): void;

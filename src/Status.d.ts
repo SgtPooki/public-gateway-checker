@@ -2,10 +2,14 @@ import type { GatewayNode } from './GatewayNode';
 import { UiComponent } from './UiComponent';
 declare class Status extends UiComponent {
     readonly parent: GatewayNode;
-    up: boolean;
+    private _up;
+    private _down;
     constructor(parent: GatewayNode);
     check(): Promise<void>;
-    checked(): void;
+    get down(): boolean;
+    set down(value: boolean);
+    get up(): boolean;
+    set up(value: boolean);
     onerror(): void;
 }
 export { Status };

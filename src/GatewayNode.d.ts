@@ -4,7 +4,7 @@ import { Origin } from './Origin';
 import type { Results } from './Results';
 import { Status } from './Status';
 import { UiComponent } from './UiComponent';
-declare class GatewayNode extends UiComponent implements Checkable {
+declare class GatewayNode extends UiComponent {
     readonly parent: Results;
     status: Status;
     cors: Cors;
@@ -17,10 +17,10 @@ declare class GatewayNode extends UiComponent implements Checkable {
     gateway: string;
     index: unknown;
     checkingTime: number;
+    atLeastOneSuccess: boolean;
     constructor(parent: Results, gateway: string, index: unknown);
     check(): Promise<void>;
-    checked(): void;
-    failed(): void;
+    private onSuccessfulCheck;
     onerror(): void;
 }
 export { GatewayNode };

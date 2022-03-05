@@ -10,12 +10,6 @@ class Results {
     append(tag) {
         this.element.append(tag.element);
     }
-    checked() {
-        this.parent.updateStats();
-    }
-    failed() {
-        this.parent.updateStats();
-    }
 }
 export { Results };
 //# sourceMappingURL=Results.js.map

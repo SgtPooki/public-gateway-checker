@@ -22,8 +22,11 @@ class Stats extends UiComponent {
         let up = 0;
         let down = 0;
         for (const savedNode of this.parent.nodes) {
-            if ('up' in savedNode.status) {
-                savedNode.status.up ? ++up : ++down;
+            if (savedNode.status.up) {
+                up += 1;
+            }
+            else if (savedNode.status.down) {
+                down += 1;
             }
         }
         this.gateways.textContent = `${up + down}/${this.parent.nodes.length} tested`;

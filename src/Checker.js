@@ -1,6 +1,8 @@
 import { GatewayNode } from './GatewayNode';
 import { Results } from './Results';
 import { Stats } from './Stats';
+import { Log } from './Log';
+const log = new Log('Checker');
 class Checker {
     constructor() {
         this.nodes = [];
@@ -11,17 +13,23 @@ class Checker {
         this.element = element;
         this.stats = new Stats(this);
         this.results = new Results(this);
+        this.updateStats = this.updateStats.bind(this);
     }
     updateStats() {
         this.stats.update();
     }
-    checkGateways(gateways) {
+    async checkGateways(gateways) {
+        const allChecks = [];
         for (const gateway of gateways) {
             const node = new GatewayNode(this.results, gateway, this.nodes.length);
             this.nodes.push(node);
             this.results.append(node.tag);
-            setTimeout(() => node.check(), 100 * this.nodes.length);
+            // void node.check()
+            setTimeout(() => {
+                allChecks.push(node.check().catch((err) => log.error(err)).finally(this.updateStats));
+            }, 100 * this.nodes.length);
         }
+        // await Promise.all(allChecks).finally(this.updateStats)
     }
 }
 export { Checker };

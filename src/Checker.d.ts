@@ -5,8 +5,8 @@ declare class Checker {
     private readonly stats;
     private readonly results;
     constructor();
-    updateStats(): void;
-    checkGateways(gateways: string[]): void;
+    private updateStats;
+    checkGateways(gateways: string[]): Promise<void>;
 }
 export { Checker };
 //# sourceMappingURL=Checker.d.ts.map

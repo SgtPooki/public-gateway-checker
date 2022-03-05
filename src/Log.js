@@ -14,10 +14,10 @@ class Log {
      * @param args
      */
     log(method, ...args) {
-        const [msg, optionalParams] = args;
-        const prefix = this.namespace != null ? `${this.namespace}: ` : '';
+        const [msg, ...optionalParams] = args;
+        const prefix = this.namespace != null ? `${this.namespace}.${method}: ` : '';
         // eslint-disable-next-line no-console
-        console[method](`${prefix}${msg}`, optionalParams);
+        console[method](`${prefix}${msg}`, ...optionalParams);
     }
     debug(...args) {
         this.log('debug', ...args);

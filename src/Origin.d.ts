@@ -5,7 +5,7 @@ declare class Origin {
     tag: Tag;
     constructor(parent: GatewayNode);
     check(): Promise<void>;
-    onerror(): void;
+    onerror(err: Error): void;
 }
 export { Origin };
 //# sourceMappingURL=Origin.d.ts.map

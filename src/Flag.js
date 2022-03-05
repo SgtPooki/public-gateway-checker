@@ -28,6 +28,7 @@ class Flag extends UiComponent {
         catch (e) {
             log.error(`error while getting savedSTR for ${this.hostname}`, e);
             this.onError();
+            throw e;
         }
         if (ask) {
             this.startLimiters();
