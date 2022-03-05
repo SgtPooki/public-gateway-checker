@@ -18,7 +18,7 @@ declare class GatewayNode extends UiComponent implements Checkable {
     index: unknown;
     checkingTime: number;
     constructor(parent: Results, gateway: string, index: unknown);
-    check(): void;
+    check(): Promise<void>;
     checked(): void;
     failed(): void;
     onerror(): void;

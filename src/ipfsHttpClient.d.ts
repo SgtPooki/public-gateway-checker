@@ -1,3 +1,3 @@
-declare const ipfsHttpClient: import("ipfs-http-client/types/src/types").IPFSHTTPClient;
+declare const ipfsHttpClient: any;
 export { ipfsHttpClient };
 //# sourceMappingURL=ipfsHttpClient.d.ts.map

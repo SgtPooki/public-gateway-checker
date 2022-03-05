@@ -4,7 +4,7 @@ declare class Origin {
     parent: GatewayNode;
     tag: Tag;
     constructor(parent: GatewayNode);
-    check(): void;
+    check(): Promise<void>;
     onerror(): void;
 }
 export { Origin };

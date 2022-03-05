@@ -58,11 +58,9 @@ class GatewayNode extends UiComponent {
         this.index = index;
         this.checkingTime = 0;
     }
-    check() {
+    async check() {
         this.checkingTime = Date.now();
-        this.status.check();
-        this.cors.check();
-        this.origin.check();
+        await Promise.all([this.flag.check(), this.status.check(), this.cors.check(), this.origin.check()]);
     }
     checked() {
         // we care only about the fatest method

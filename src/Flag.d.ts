@@ -3,11 +3,16 @@ import { UiComponent } from './UiComponent';
 declare class Flag extends UiComponent {
     protected parent: GatewayNode;
     private readonly hostname;
-    private static requests;
+    /**
+     */
+    static readonly googleLimiter: any;
+    static readonly cloudFlareLimiter: any;
     constructor(parent: GatewayNode, hostname: string);
-    setup(): void;
+    check(): Promise<void>;
+    private startLimiters;
+    waitForAvailableEndpoint(): Promise<string>;
     private dnsRequest;
-    handleSuccessfulRequest(request: XMLHttpRequest): Promise<void>;
+    handleDnsQueryResponse(response: DnsQueryResponse): Promise<void>;
     private onError;
     onResponse(response: IpfsGeoip.LookupResponse): void;
 }

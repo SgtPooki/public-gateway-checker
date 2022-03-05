@@ -5,7 +5,7 @@ declare class Cors extends CheckBase implements Checkable {
     _className: string;
     _tagName: string;
     constructor(parent: GatewayNode);
-    check(): void;
+    check(): Promise<void>;
     checked(): void;
     onerror(): void;
 }

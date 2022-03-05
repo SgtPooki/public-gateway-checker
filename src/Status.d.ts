@@ -4,7 +4,7 @@ declare class Status extends UiComponent {
     readonly parent: GatewayNode;
     up: boolean;
     constructor(parent: GatewayNode);
-    check(): void;
+    check(): Promise<void>;
     checked(): void;
     onerror(): void;
 }

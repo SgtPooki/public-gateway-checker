@@ -7,13 +7,13 @@ class Status extends UiComponent {
         this.parent = parent;
         this.up = false;
     }
-    check() {
+    async check() {
         // test by loading subresource via img.src (path will work on both old and subdomain gws)
         const gwUrl = new URL(this.parent.gateway);
         const imgPathUrl = new URL(`${gwUrl.protocol}//${gwUrl.hostname}/ipfs/${Util.IMG_HASH}?now=${Date.now()}&filename=1x1.png#x-ipfs-companion-no-redirect`);
-        Util.checkViaImgSrc(imgPathUrl).then(() => {
+        await Util.checkViaImgSrc(imgPathUrl).then(() => {
             // this.tag.textContent = '❌'
-            this.tag.lose();
+            this.tag.global();
             this.parent.checked();
         }).catch(() => {
             // we check this because the gateway could be already checked by CORS before onerror executes
